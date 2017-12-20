@@ -1,0 +1,150 @@
+<html>
+
+<head>
+  <title>validation form</title>
+</head>
+
+  <script type="text/javascript">
+
+    function checkForm(form) {
+      if (form.name.value == "") {
+        alert("Error: Username cannot be blank!");
+        form.name.focus();
+        return false;
+      }
+      re = /^[a-zA-Z]*$/;
+      if (!re.test(form.name.value)) {
+        alert("Error: Username must contain only letters!");
+        form.name.focus();
+        return false;
+      }
+      
+
+      if (form.zip.value == "") {
+        alert("Error: zipcode cannot be blank!");
+        form.zip.focus();
+        return false;
+      }
+      if (form.address.value == "") {
+        alert("Error: address cannot be blank!");
+        form.address.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if (!re.test(form.zip.value)) {
+        alert("Error:customer zipcode  must contain only numbers !");
+        form.zip.focus();
+        return false;
+      }
+      
+      if (form.phone.value == "") {
+        alert("Error:  your phone number must be input!");
+        form.phone.focus();
+        return false;
+      }
+      if (form.phone.value.length < 10) {
+        alert("Error: your phone number must contain atleast 10 characters!");
+        form.phone.focus();
+        return false;
+      }
+
+      if (form.email.value == "") {
+        alert("Error: input your email address!");
+        form.email.focus();
+        return false;
+      }
+
+
+      if (form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+        if (form.pwd1.value.length < 8) {
+          alert("Error: Password must contain at least eight characters!");
+          form.pwd1.focus();
+          return false;
+        }
+        if (form.pwd1.value == form.name.value) {
+          alert("Error: Password must be different from Username!");
+          form.pwd1.focus();
+          return false;
+        }
+        re = /[0-9]/;
+        if (!re.test(form.pwd1.value)) {
+          alert("Error: password must contain at least one number (0-9)!");
+          form.pwd1.focus();
+          return false;
+        }
+        re = /[a-z]/;
+        if (!re.test(form.pwd1.value)) {
+          alert("Error: password must contain at least one lowercase letter (a-z)!");
+          form.pwd1.focus();
+          return false;
+        }
+        re = /[A-Z]/;
+        if (!re.test(form.pwd1.value)) {
+          alert("Error: password must contain at least one uppercase letter (A-Z)!");
+          form.pwd1.focus();
+          return false;
+        }
+      } else {
+        alert("Error: Please check that you've entered and confirmed your password!");
+        form.pwd1.focus();
+        return false;
+      }
+
+      alert("You entered a valid password: " );
+      return true;
+    }
+
+  </script>
+  
+<body bgcolor="white">
+  <B><h2>Application form</B>
+  </h2>
+  <form name="validation form" action="mailto:uginseme@gmail.com" onsubmit="return checkForm(this)" method="post">
+    name:<input title="name" id="name" name="name" type="text"><br/><br/> 
+    zip code :<input title="zip code "id="zip" name="zip" type="number" maxlength="5"><br/><br/>
+     address :<input title="location" id="address" name="emailaddress" type="text" /><br/><br/>
+    <b>
+      <i>country</i>
+    </b>
+    
+    <select size="1" name="selectionfield">
+      <option value=""></option>
+      <option value="Kenya">kenya</option>
+      <option value="tanzania">tanzania</option>
+      <option value="south africa">south africa</option>
+      <option value="uganda">uganda</option>
+      <option value="burundi">burundi</option>
+      <option value="sudan">sudan</option>
+      <option value="ethiopia">ethiopia</option>
+      <option value="zambia">zambia</option>
+      <option value="zimbabwe">zimbabwe</option>
+      <option value="botswana">botswana</option>
+      <option value="nigeria">nigeria</option>
+     
+    </select>
+    <br/>
+    <br/>
+
+    <b>Gender:</b><input type="radio" name="gender" required/>: male
+    <input type="radio" name="gender" required/>: female<br/></br>
+    
+      <i><b> prerences:</i></b>
+    
+    red<input type="checkbox" name="preferences" value="red" /> 
+    blue<input type="checkbox" name="preferences " value="blue" /> 
+    green<input type="checkbox" name="preferences " value="green" /></br></br>
+
+    <B>phone: <input title="phone no " id="phone" name="phone" type="number" maxlength="10"><br/></B></br>
+    <b>email </b>:<input title="mail address " id="email" name="mail" type="mail" /></b><br/></br>
+     Password:
+    <input type="password" name="pwd1">
+    
+    <p> Password:
+      <input type="password" name="pwd2">
+    </p></br></br>
+    <input type="submit" value="submit" />
+    <input type="reset" value="clear" />
+
+</form>
+</body>
+</html>
